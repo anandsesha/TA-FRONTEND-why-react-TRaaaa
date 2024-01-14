@@ -70,7 +70,13 @@ function createUI() {
       ),
       createElement(
         'button',
-        { id: index, onClick: handleChange }, // The same way onClick can be passed in a HTML element as attribute like class. Hence passing as attribute.
+        {
+          id: index,
+          onClick: (event) => {
+            handleToggle(event, index);
+          },
+        },
+        // The same way onClick can be passed in a HTML element as attribute like class. Hence passing as attribute.
         movie.watched ? 'Watched' : 'To Watch'
       ),
       createElement('br')
