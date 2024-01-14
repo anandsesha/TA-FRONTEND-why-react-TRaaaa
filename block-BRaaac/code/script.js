@@ -22,25 +22,21 @@ function createElement(type, attr = {}, ...children) {
   for (let key in attr) {
     if (key.startsWith('data-')) {
       element.setAttribute(key, attr[key]);
+    } else if (key.startsWith('on')) {
+      let eventType = key.replace('on', '').toLowerCase();
+      element.addEventListener(eventType, attr[key]);
     } else {
       element[key] = attr[key];
     }
   }
 
   children.forEach((child) => {
-    console.log(typeof child);
     if (typeof child === 'object') {
       element.append(child);
     }
     if (typeof child === 'string') {
       let node = document.createTextNode(child);
       element.append(node);
-      console.log(element);
-    }
-
-    if (child === 'button') {
-      child.innerText = 'To Watch';
-      movie.watched ? (child.innerText = 'Watched') : 'To Watch';
     }
   });
 
@@ -55,6 +51,11 @@ function createUI() {
     // let button = document.createElement('button');
     // let br = document.createElement('br');
 
+    // We will keep button element creation outside of li to access handleToggle. Future this process will change.
+    // btn.addEventListener('click', (event) => {
+    //   handleToggle(event, index);
+    // });
+
     let li = createElement(
       'li',
       {
@@ -67,15 +68,13 @@ function createUI() {
         },
         movie.name
       ),
-      createElement('button', {}),
+      createElement(
+        'button',
+        { id: index, onClick: handleChange }, // The same way onClick can be passed in a HTML element as attribute like class. Hence passing as attribute.
+        movie.watched ? 'Watched' : 'To Watch'
+      ),
       createElement('br')
     );
-
-    // movie.watched ? (button.innerText = 'Watched') : 'To Watch';
-
-    // button.addEventListener('click', (event) => {
-    //   handleToggle(event, index);
-    // });
 
     // li.append(h2, button);
     rootElm.append(li);
