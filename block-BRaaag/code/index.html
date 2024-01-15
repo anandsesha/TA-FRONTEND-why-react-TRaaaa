@@ -106,7 +106,7 @@
 
           // rootElm.append(li);
           return (
-            <li className="movie-card">
+            <li className="movie-card" key={movie.name}>
               <h2 className="movie-name">{movie.name}</h2>
               <button
                 data-id={index}
