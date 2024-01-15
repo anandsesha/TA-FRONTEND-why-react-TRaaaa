@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1.0, initial-scale=1.0" />
+    <title>Movie WatchList App - VanillaJS</title>
+    <link rel="stylesheet" href="../code/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;1,200&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Movie Watch List</h1>
+      <input type="text" placeholder="Enter a movie name" />
+      <ul class="movies-list"></ul>
+    </div>
+    <!-- React and ReactDOM  -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      var input = document.querySelector(`input[type="text"]`);
+      var rootElm = document.querySelector(`.movies-list`);
+
+      var allMovies = [];
+
+      {
+        /* <li class="movie-card">
+                <h2 class="movie-name">Forest Gump</h2>
+                <button>To Watch</button>
+            </li>
+            <br /> */
+      }
+
+      function handleToggle(event, index) {
+        allMovies[index].watched = !allMovies[index].watched;
+        createUI();
+      }
+
+      // function createElement(type, attr = {}, ...children) {
+      //   let element = document.createElement(type);
+
+      //   for (let key in attr) {
+      //     if (key.startsWith('data-')) {
+      //       element.setAttribute(key, attr[key]);
+      //     } else if (key.startsWith('on')) {
+      //       let eventType = key.replace('on', '').toLowerCase();
+      //       element.addEventListener(eventType, attr[key]);
+      //     } else {
+      //       element[key] = attr[key];
+      //     }
+      //   }
+
+      //   children.forEach((child) => {
+      //     if (typeof child === 'object') {
+      //       element.append(child);
+      //     }
+      //     if (typeof child === 'string') {
+      //       let node = document.createTextNode(child);
+      //       element.append(node);
+      //     }
+      //   });
+
+      //   return element;
+      // }
+
+      function createUI() {
+        //   rootElm.innerHTML = '';
+
+        let allMoviesUI = allMovies.map((movie, index) => {
+          // let li = React.createElement(
+          //   'li',
+          //   {
+          //     className: 'movie-card',
+          //   },
+          //   React.createElement(
+          //     'h2',
+          //     {
+          //       className: 'movie-name',
+          //     },
+          //     movie.name
+          //   ),
+          //   React.createElement(
+          //     'button',
+          //     {
+          //       id: index,
+          //       onClick: (event) => {
+          //         handleToggle(event, index);
+          //       },
+          //     },
+          //     // The same way onClick can be passed in a HTML element as attribute like class. Hence passing as attribute.
+          //     movie.watched ? 'Watched' : 'To Watch'
+          //   ),
+          //   React.createElement('br')
+          // );
+
+          // rootElm.append(li);
+          return (
+            <li className="movie-card" key={movie.name}>
+              <h2 className="movie-name">{movie.name}</h2>
+              <button
+                data-id={index}
+                onClick={(event) => {
+                  handleToggle(event, index);
+                }}
+              >
+                {movie.watched ? 'Watched' : 'To Watch'}
+              </button>
+            </li>
+          );
+        });
+
+        ReactDOM.render(allMoviesUI, rootElm);
+      }
+
+      function handleChange(event) {
+        if (event.keyCode == 13) {
+          allMovies.push({
+            name: event.target.value,
+            watched: false,
+          });
+          event.target.value = '';
+          createUI();
+        }
+      }
+
+      input.addEventListener('keyup', handleChange);
+    </script>
+  </body>
+</html>
