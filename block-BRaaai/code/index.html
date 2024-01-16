@@ -51,6 +51,20 @@
     <script type="text/babel">
       console.log(`Hi`);
       var root = document.querySelector('.root');
+      var months = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+      ];
 
       var cardInfo = {
         title: 'City Lights in New York',
@@ -64,26 +78,25 @@
           'https://images.unsplash.com/photo-1610874933184-7728fd666162?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60',
       };
 
-      function createCardUI() {
-        let articleUI = (
-          <li className="article-card">
-            <img src={cardInfo.imageURL} alt="article image" />
-            <div className="flex jsb">
-              <h3 className="photos">{cardInfo.category}</h3>
-              <h3 className="date">{cardInfo.date}</h3>
-            </div>
-            <div className="article-description">
-              <h1 className="title">{cardInfo.title}</h1>
-              <h2 className="subtitle">{cardInfo.subTitle}</h2>
-              <p className="description">{cardInfo.description}</p>
-              <h5 className="comments">💬 {cardInfo.comments} comments</h5>
-            </div>
-          </li>
-        );
+      let articleUI = (
+        <li className="article-card">
+          <img src={cardInfo.imageURL} alt="article image" />
+          <div className="flex jsb">
+            <h3 className="photos">{cardInfo.category}</h3>
+            <h3 className="date">
+              {cardInfo.date.getDate()} {months[cardInfo.date.getMonth()]}
+            </h3>
+          </div>
+          <div className="article-description">
+            <h1 className="title">{cardInfo.title}</h1>
+            <h2 className="subtitle">{cardInfo.subTitle}</h2>
+            <p className="description">{cardInfo.description}</p>
+            <h5 className="comments">💬 {cardInfo.comments} comments</h5>
+          </div>
+        </li>
+      );
 
-        ReactDOM.render(articleUI, root);
-      }
-      createCardUI();
+      ReactDOM.render(articleUI, root);
     </script>
   </body>
 </html>
