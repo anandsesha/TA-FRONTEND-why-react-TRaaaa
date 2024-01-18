@@ -17,8 +17,8 @@
         <h5 class="main-title">Collection of best articles on startups</h5>
         
         <div class="container">
-            <ul class="root flex jsb aic">     
-                <li class="article-card flex-33">
+            <ul class="root flex jsb ais">     
+                <!-- <li class="article-card flex-33">
                     
                     <img
                     src="https://images.unsplash.com/photo-1610874933184-7728fd666162?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
@@ -80,7 +80,7 @@
                     </p>
                     <h5 class="comments">💬 39 comments</h5>
                     </div>
-                </li>
+                </li> -->
                 
             </ul>
         </div>
@@ -98,6 +98,7 @@
         <script type="text/babel">
         console.log(`Hi`);
         var root = document.querySelector('.root');
+        
         var months = [
             'Jan',
             'Feb',
@@ -151,51 +152,35 @@
             },
         ];
 
-        let Article = (props) => {
+        // Component called Article returning JSX
+        function Article (props)  {
             console.log(props);
 
             return (
                 <li className="article-card flex-33">
-            <img src={cardInfo.imageURL} alt="article image" />
+            <img src={props.articleInfo.imageURL} alt="article image" />
             <div className="flex jsb">
-                <h3 className="photos">{cardInfo.category}</h3>
+                <h3 className="photos">{props.articleInfo.category}</h3>
                 <h3 className="date">
-                {cardInfo.date.getDate()} {months[cardInfo.date.getMonth()]}
+                {props.articleInfo.date.getDate()} {months[props.articleInfo.date.getMonth()]}
                 </h3>
             </div>
             <div className="article-description">
-                <h1 className="title">{cardInfo.title}</h1>
-                <h2 className="subtitle">{cardInfo.subTitle}</h2>
-                <p className="description">{cardInfo.description}</p>
-                <h5 className="comments">💬 {cardInfo.comments} comments</h5>
+                <h1 className="title">{props.articleInfo.title}</h1>
+                <h2 className="subtitle">{props.articleInfo.subTitle}</h2>
+                <p className="description">{props.articleInfo.description}</p>
+                <h5 className="comments">💬 {props.articleInfo.comments} comments</h5>
             </div>
             </li>
             )
         }
 
-        let Articles = () => {
-            articles.map(article => {})
+        // <Article /> component created above is called with each 'article' from the articles array , passed as a props.  
+        function Articles() {
+            return articles.map((article) => <Article articleInfo={article} />)
         }
 
-        let articleUI = (
-            <li className="article-card flex-33">
-            <img src={cardInfo.imageURL} alt="article image" />
-            <div className="flex jsb">
-                <h3 className="photos">{cardInfo.category}</h3>
-                <h3 className="date">
-                {cardInfo.date.getDate()} {months[cardInfo.date.getMonth()]}
-                </h3>
-            </div>
-            <div className="article-description">
-                <h1 className="title">{cardInfo.title}</h1>
-                <h2 className="subtitle">{cardInfo.subTitle}</h2>
-                <p className="description">{cardInfo.description}</p>
-                <h5 className="comments">💬 {cardInfo.comments} comments</h5>
-            </div>
-            </li>
-        );
-
-        ReactDOM.render(articleUI, root);
+        ReactDOM.render(<Articles />, root);
         </script>
     </body>
     </html>

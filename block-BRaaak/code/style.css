@@ -169,6 +169,9 @@ body {
 .aic {
   align-items: center;
 }
+.ais {
+  align-items: stretch;
+}
 .container {
   background-color: rgb(242, 242, 242);
   width: 100%;
