@@ -27,57 +27,53 @@
     -->
     <title>React App</title>
   </head>
+
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root">
-      <header class="header">
-        <div class="container flex jcc aic">
-          <div class="image-wrapper">
-            <img src="./logo512.png" alt="Article Page Logo" />
-          </div>
-          <nav class="nav-links">
-            <ul class="flex">
-              <li><a href="">Home</a></li>
-              <li><a href="">About</a></li>
-              <li><a href="">Contact</a></li>
-            </ul>
-          </nav>
-        </div>
+      <header class="container">
+        <h1>Header</h1>
       </header>
 
-      <!-- Hero Section -->
-      <div class="hero-section"></div>
+      <section class="hero container">
+        <img src="hero-image.jpg" alt="Hero Image" />
+      </section>
 
-      <!-- Articles section -->
-      <div class="articles">
+      <section class="articles container">
         <h2>Articles</h2>
-        <div class="container flex jsb">
+        <div class="article-wrapper flex jcc aic">
           <div class="article">
-            <img src="mountain.jpg" alt="" />
-            <h3>Image title</h3>
+            <img src="article1.jpg" alt="Article 1" />
+            <p>Description of Article 1</p>
           </div>
           <div class="article">
-            <img src="mountain.jpg" alt="" />
-            <h3>Image title</h3>
+            <img src="article2.jpg" alt="Article 2" />
+            <p>Description of Article 2</p>
           </div>
           <div class="article">
-            <img src="mountain.jpg" alt="" />
-            <h3>Image title</h3>
+            <img src="article3.jpg" alt="Article 3" />
+            <p>Description of Article 3</p>
+          </div>
+          <!-- More articles can be added here -->
+
+          <div class="article">
+            <img src="article2.jpg" alt="Article 2" />
+            <p>Description of Article 2</p>
           </div>
           <div class="article">
-            <img src="mountain.jpg" alt="" />
-            <h3>Image title</h3>
+            <img src="article3.jpg" alt="Article 3" />
+            <p>Description of Article 3</p>
           </div>
           <div class="article">
-            <img src="mountain.jpg" alt="" />
-            <h3>Image title</h3>
-          </div>
-          <div class="article">
-            <img src="mountain.jpg" alt="" />
-            <h3>Image title</h3>
+            <img src="article3.jpg" alt="Article 3" />
+            <p>Description of Article 3</p>
           </div>
         </div>
-      </div>
+      </section>
+
+      <footer class="container">
+        <p>Footer</p>
+      </footer>
     </div>
     <!--
       This HTML file is a template.
