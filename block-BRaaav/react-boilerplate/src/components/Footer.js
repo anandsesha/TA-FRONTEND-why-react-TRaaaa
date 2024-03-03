@@ -1,9 +1,9 @@
 function Footer() {
   return (
-    <footer class="footer padding">
-      <div class="container">
-        <div class="flex align-start">
-          <div class="flex-40">
+    <footer className="footer padding">
+      <div className="container">
+        <div className="flex align-start">
+          <div className="flex-40">
             <h3>Hydro Company</h3>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex
@@ -12,7 +12,7 @@ function Footer() {
               explicabo quod error maxime!
             </p>
           </div>
-          <div class="flex-20">
+          <div className="flex-20">
             <h3>Company</h3>
             <nav>
               <ul>
@@ -31,7 +31,7 @@ function Footer() {
               </ul>
             </nav>
           </div>
-          <div class="flex-20">
+          <div className="flex-20">
             <h3>Services</h3>
             <nav>
               <ul>
@@ -47,7 +47,7 @@ function Footer() {
               </ul>
             </nav>
           </div>
-          <div class="flex-20">
+          <div className="flex-20">
             <h3>Find Us</h3>
             <address>
               AltCampus, Thehr, Khaniyara,
@@ -57,25 +57,25 @@ function Footer() {
           </div>
         </div>
         <hr />
-        <div class="flex footer-additional-info">
+        <div className="flex footer-additional-info">
           <small> Copyright &copy; 2017 Your Company </small>
-          <div class="flex">
+          <div className="flex">
             <p>Call us (+66) 010-020-0340</p>
             <nav>
-              <ul class="flex">
-                <li class="social-media-item">
+              <ul className="flex">
+                <li className="social-media-item">
                   <a href="/">
-                    <i class="fab fa-facebook-square"></i>
+                    <i className="fab fa-facebook-square"></i>
                   </a>
                 </li>
-                <li class="social-media-item">
+                <li className="social-media-item">
                   <a href="/">
-                    <i class="fab fa-twitter"></i>
+                    <i className="fab fa-twitter"></i>
                   </a>
                 </li>
-                <li class="social-media-item">
+                <li className="social-media-item">
                   <a href="/">
-                    <i class="fab fa-instagram"></i>
+                    <i className="fab fa-instagram"></i>
                   </a>
                 </li>
               </ul>
