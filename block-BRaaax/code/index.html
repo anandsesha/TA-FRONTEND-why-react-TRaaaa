@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1.0, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Buttons</title>
   </head>
   <body>
@@ -20,20 +21,49 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="text/babel">
+      //   import { buttonTypes, buttonSizes } from './buttonInfo.js';
+
       var root = document.querySelector('.root');
-      function Button(props) {
-        console.log(props);
-        return <button>{props.label}</button>;
+      //   console.log(buttonSizes, buttonTypes);
+      function App() {
+        return (
+          <div className="App">
+            <Button label="Button" type="primary" />
+            <Button label="Button" />
+            <Button label="Button" size="small" type="secondary" />
+            <Button label="Button" size="medium" type="tertiary" />
+            <Button
+              size="large"
+              label="Button"
+              type="tertiary"
+              onClickHandler={() => alert('You Clicked Me!')}
+            />
+            <Button disabled />
+          </div>
+        );
       }
 
-      let Buttons = (
-        <>
-          <Button label="Button" />
-          <Button size="small" label="Button" type="secondary" />
-        </>
-      );
+      function Button(props) {
+        console.log(props);
 
-      ReactDOM.render(Buttons, root);
+        function getSizeAndType() {
+          let { type = 'primary', size = 'medium' } = props;
+          return `button button--${type} button--${size} dark`;
+        }
+        return (
+          <>
+            <button
+              className={getSizeAndType()}
+              disabled={props.disabled}
+              onClick={props.onClickHandler}
+            >
+              {props.label || 'Button'}
+            </button>
+          </>
+        );
+      }
+
+      ReactDOM.render(<App />, root);
     </script>
   </body>
 </html>
