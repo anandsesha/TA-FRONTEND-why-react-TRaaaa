@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1.0, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Buttons</title>
+  </head>
+  <body>
+    <div class="root"></div>
+    <!-- React and ReactDOM CDN scripts -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <!-- Babel script -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      //   import { buttonTypes, buttonSizes } from './buttonInfo.js';
+
+      var root = document.querySelector('.root');
+      //   console.log(buttonSizes, buttonTypes);
+      function App() {
+        return (
+          <div className="App">
+            <Button label="Button" type="primary" />
+            <Button label="Button" />
+            <Button label="Button" size="small" type="secondary" />
+            <Button label="Button" size="medium" type="tertiary" />
+            <Button
+              size="large"
+              label="Button"
+              type="tertiary"
+              onClickHandler={() => alert('You Clicked Me!')}
+            />
+            <Button disabled />
+          </div>
+        );
+      }
+
+      function Button(props) {
+        console.log(props);
+
+        function getSizeAndType() {
+          let { type = 'primary', size = 'medium' } = props;
+          return `button button--${type} button--${size} dark`;
+        }
+        return (
+          <>
+            <button
+              className={getSizeAndType()}
+              disabled={props.disabled}
+              onClick={props.onClickHandler}
+            >
+              {props.label || 'Button'}
+            </button>
+          </>
+        );
+      }
+
+      ReactDOM.render(<App />, root);
+    </script>
+  </body>
+</html>
